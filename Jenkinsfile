@@ -16,20 +16,20 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                sh 'npm install'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t %DOCKER_IMAGE%:%BUILD_NUMBER% .'
+                sh 'docker build -t $DOCKER_IMAGE:$BUILD_NUMBER .'
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                bat 'kubectl apply -f deployment.yaml'
-                bat 'kubectl apply -f service.yaml'
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
             }
         }
     }
