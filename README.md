@@ -2,9 +2,16 @@
 
 ## Overview
 
-This project demonstrates an end-to-end CI/CD pipeline using GitHub Actions, Jenkins, and Docker. The pipeline automates code integration, testing, Docker image creation, image publishing, and deployment processes.
+This project demonstrates an end-to-end CI/CD pipeline using GitHub Actions, Jenkins, and Docker.
 
-The primary goal of this project is to build a practical and scalable CI/CD workflow while following DevOps best practices for automation, containerization, and deployment.
+The pipeline automates:
+- Code integration
+- Build process
+- Docker image creation
+- Image publishing to DockerHub
+- Automated deployment
+
+The main objective of this project is to implement a practical DevOps workflow using modern CI/CD tools and containerization technologies.
 
 ---
 
@@ -141,9 +148,11 @@ docker push your-dockerhub-username/your-image-name
 ## Design Decisions
 
 ### Why Docker before Kubernetes?
+
 The project focuses on mastering CI/CD fundamentals and container lifecycle management before moving to orchestration platforms like Kubernetes.
 
 ### Why Jenkins with GitHub Actions?
+
 GitHub Actions provides SCM-native automation while Jenkins simulates enterprise-grade pipeline orchestration commonly used in production environments.
 
 ---
@@ -163,5 +172,3 @@ This project was designed to demonstrate practical DevOps skills including:
 ## Author
 
 Sujith Kumar S
-
-```
