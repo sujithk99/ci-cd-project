@@ -1,50 +1,32 @@
-# 🚀 DevOps CI/CD Pipeline Project
+# CI/CD Pipeline Project
 
-This project demonstrates a complete CI/CD pipeline using:
+## Overview
+This project demonstrates an end-to-end CI/CD pipeline using GitHub Actions, Jenkins, and Docker.
 
-- GitHub
+## Architecture
+- GitHub for source control
+- GitHub Actions for CI trigger
+- Jenkins for orchestration
+- Docker for containerization
+- DockerHub for image registry
+
+## Pipeline Flow
+1. Developer pushes code
+2. GitHub webhook triggers pipeline
+3. Jenkins starts build
+4. Docker image is created
+5. Image pushed to DockerHub
+6. Application deployed
+
+## Tech Stack
 - GitHub Actions
 - Jenkins
 - Docker
-- Kubernetes
+- Linux
+- GitHub Webhooks
 
-The pipeline automatically builds, tests, containerizes, and deploys the application whenever code is pushed to GitHub.
-
----
-
-# 📌 Project Architecture
-
-Developer → GitHub → GitHub Actions → Jenkins → Docker → Kubernetes
-
----
-
-# 🛠 Technologies Used
-
-| Tool | Purpose |
-|------|----------|
-| GitHub | Source Code Management |
-| GitHub Actions | Trigger CI/CD Workflow |
-| Jenkins | CI/CD Automation |
-| Docker | Containerization |
-| Docker Hub | Container Registry |
-| Kubernetes | Container Orchestration |
-| Minikube | Local Kubernetes Cluster |
-
----
-
-# 📂 Project Structure
-
-```bash
-project/
-│
-├── .github/
-│   └── workflows/
-│       └── main.yml
-│
-├── deployment.yaml
-├── service.yaml
-├── Dockerfile
-├── Jenkinsfile
-├── package.json
-├── index.js
-└── README.md
+## Future Enhancements
+- Kubernetes deployment
+- Helm charts
+- Monitoring with Grafana
+- ArgoCD GitOps
