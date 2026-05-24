@@ -11,7 +11,7 @@ The pipeline automates:
 - Image publishing to DockerHub
 - Automated deployment
 
-The main objective of this project is to implement a practical DevOps workflow using modern CI/CD tools and containerization technologies.
+The primary goal of this project is to implement a practical DevOps workflow using CI/CD automation and containerization technologies.
 
 ---
 
@@ -28,7 +28,7 @@ The main objective of this project is to implement a practical DevOps workflow u
 
 ## Architecture Diagram
 
-![CI/CD Architecture](docs/architecture-diagram.png)
+![CI/CD Architecture](architecture-diagram.png)
 
 ---
 
@@ -69,15 +69,13 @@ ci-cd-project/
 │   └── workflows/
 │       └── ci.yml
 │
-├── docs/
-│   └── architecture-diagram.png
-│
 ├── app/
 │
 ├── Dockerfile
 ├── Jenkinsfile
 ├── docker-compose.yml
 ├── requirements.txt
+├── architecture-diagram.png
 └── README.md
 ```
 
