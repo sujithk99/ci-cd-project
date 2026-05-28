@@ -16,11 +16,5 @@ pipeline {
             }
         }
 
-        stage('Docker Validation') {
-            steps {
-                sh 'docker --version'
-            }
-        }
-
     }
 }
