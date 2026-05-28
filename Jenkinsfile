@@ -10,21 +10,9 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
         stage('Run Application Test') {
             steps {
                 sh 'node index.js'
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t cicd-app .'
             }
         }
 
