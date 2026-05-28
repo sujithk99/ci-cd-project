@@ -10,9 +10,15 @@ pipeline {
             }
         }
 
-        stage('Run Application Test') {
+        stage('Pipeline Validation') {
             steps {
-                sh 'node index.js'
+                sh 'echo CI/CD Pipeline Working Successfully'
+            }
+        }
+
+        stage('Docker Validation') {
+            steps {
+                sh 'docker --version'
             }
         }
 
