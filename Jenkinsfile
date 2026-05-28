@@ -3,9 +3,27 @@ pipeline {
 
     stages {
 
-        stage('Pipeline Test') {
+        stage('Checkout Code') {
             steps {
-                sh 'echo Jenkins Pipeline Working Successfully'
+                git 'https://github.com/sujithk99/ci-cd-project.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Run Application Test') {
+            steps {
+                sh 'node index.js'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t cicd-app .'
             }
         }
     }
