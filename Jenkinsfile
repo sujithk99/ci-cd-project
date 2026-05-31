@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
@@ -10,11 +9,10 @@ pipeline {
             }
         }
 
-        stage('Pipeline Validation') {
+        stage('Syntax Check') {
             steps {
-                sh 'echo CI/CD Pipeline Working Successfully'
+                bat 'node --check index.js'
             }
         }
-
     }
 }
