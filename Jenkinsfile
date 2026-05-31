@@ -9,9 +9,9 @@ pipeline {
             }
         }
 
-        stage('Pipeline Validation') {
+        stage('Build Docker Image') {
             steps {
-                sh 'echo Multiple Commit Test Passed'
+                sh 'docker build -t docker-pipeline-app .'
             }
         }
     }

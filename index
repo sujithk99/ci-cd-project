@@ -1,7 +1,11 @@
 const express = require("express");
 
-console.log("test"
+const app = express();
+
+app.get("i/", (req, res) => {
+    res.send("Pipeline Working 🚀");
+});
 
 app.listen(3000, () => {
-  console.log("Running");
+    console.log("Server running on port 3000");
 });
