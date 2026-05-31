@@ -11,7 +11,7 @@ pipeline {
 
         stage('Syntax Check') {
             steps {
-                bat 'node --check index.js'
+                sh 'node --check index.js'
             }
         }
     }
