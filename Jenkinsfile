@@ -1,47 +1,25 @@
 pipeline {
     agent any
 
-    stages {
+    parameters {
+        string(
+            name: 'IMAGE_TAG',
+            defaultValue: 'latest',
+            description: 'Docker Image Tag'
+        )
+    }
 
-        stage('Checkout Code') {
-            steps {
-                echo 'Code Checked Out'
-            }
-        }
+    stages {
 
         stage('Build') {
             steps {
-                echo 'Build Successful'
+                echo "Building image with tag: ${params.IMAGE_TAG}"
             }
         }
 
-        stage('Test') {
+        stage('Deploy') {
             steps {
-                echo 'Tests Passed'
-            }
-        }
-
-        stage('Deploy Dev') {
-            steps {
-                echo 'Application Deployed to DEV'
-            }
-        }
-
-        stage('Manual Approval') {
-            steps {
-                input 'Approve deployment to Staging?'
-            }
-        }
-
-        stage('Deploy Staging') {
-            steps {
-                echo 'Application Deployed to STAGING'
-            }
-        }
-
-        stage('Deploy Production') {
-            steps {
-                echo 'Application Deployed to PRODUCTION'
+                echo "Deploying image: docker-pipeline-app:${params.IMAGE_TAG}"
             }
         }
     }
