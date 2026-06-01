@@ -2,22 +2,46 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout Code') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/sujithk99/ci-cd-project.git'
+                echo 'Code Checked Out'
             }
         }
 
-        stage('Lint Validation') {
+        stage('Build') {
             steps {
-                echo 'Lint Stage Executed Successfully'
+                echo 'Build Successful'
             }
         }
 
-        stage('Pipeline Validation') {
+        stage('Test') {
             steps {
-                sh 'echo Multiple Commit Test Passed'
+                echo 'Tests Passed'
+            }
+        }
+
+        stage('Deploy Dev') {
+            steps {
+                echo 'Application Deployed to DEV'
+            }
+        }
+
+        stage('Manual Approval') {
+            steps {
+                input 'Approve deployment to Staging?'
+            }
+        }
+
+        stage('Deploy Staging') {
+            steps {
+                echo 'Application Deployed to STAGING'
+            }
+        }
+
+        stage('Deploy Production') {
+            steps {
+                echo 'Application Deployed to PRODUCTION'
             }
         }
     }
