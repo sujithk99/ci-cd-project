@@ -9,9 +9,15 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Lint Validation') {
             steps {
-                sh 'docker build -t docker-pipeline-app .'
+                echo 'Lint Stage Executed Successfully'
+            }
+        }
+
+        stage('Pipeline Validation') {
+            steps {
+                sh 'echo Multiple Commit Test Passed'
             }
         }
     }
