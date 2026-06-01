@@ -2,24 +2,17 @@ pipeline {
     agent any
 
     parameters {
-        string(
+        choice(
             name: 'IMAGE_TAG',
-            defaultValue: 'latest',
-            description: 'Docker Image Tag'
+            choices: ['latest', 'v1.0', 'v1.1'],
+            description: 'Select Docker Image Version'
         )
     }
 
     stages {
-
         stage('Build') {
             steps {
-                echo "Building image with tag: ${params.IMAGE_TAG}"
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo "Deploying image: docker-pipeline-app:${params.IMAGE_TAG}"
+                echo "Selected Image Tag: ${params.IMAGE_TAG}"
             }
         }
     }
