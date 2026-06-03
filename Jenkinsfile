@@ -1,18 +1,28 @@
 pipeline {
     agent any
 
-    parameters {
-        choice(
-            name: 'IMAGE_TAG',
-            choices: ['latest', 'v1.0', 'v1.1'],
-            description: 'Select Docker Image Version'
-        )
-    }
-
     stages {
+
+        stage('Parallel Validation') {
+            parallel {
+
+                stage('Unit Tests') {
+                    steps {
+                        echo 'Running Unit Tests'
+                    }
+                }
+
+                stage('Security Scan') {
+                    steps {
+                        echo 'Running Security Scan'
+                    }
+                }
+            }
+        }
+
         stage('Build') {
             steps {
-                echo "Selected Image Tag: ${params.IMAGE_TAG}"
+                echo 'Building Application'
             }
         }
     }
