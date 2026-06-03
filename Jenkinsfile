@@ -2,10 +2,8 @@ pipeline {
     agent any
 
     stages {
-
         stage('Parallel Validation') {
             parallel {
-
                 stage('Unit Tests') {
                     steps {
                         echo 'Running Unit Tests'
