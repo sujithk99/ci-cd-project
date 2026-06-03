@@ -1,39 +1,11 @@
 pipeline {
     agent any
 
-    environment {
-        IMAGE_NAME = "dockersujith/docker-pipeline-app"
-        IMAGE_TAG = "${BUILD_NUMBER}"
-    }
-
     stages {
-
-        stage('Checkout Code') {
+        stage('Check Docker') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/sujithk99/ci-cd-project.git'
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
-            }
-        }
-
-        stage('Push Docker Image') {
-            steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub-creds',
-                    usernameVariable: 'DOCKER_USER',
-                    passwordVariable: 'DOCKER_PASS'
-                )]) {
-
-                    sh '''
-                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                    docker push ${IMAGE_NAME}:${IMAGE_TAG}
-                    '''
-                }
+                sh 'which docker || echo Docker_Not_Found'
+                sh 'docker --version || true'
             }
         }
     }
