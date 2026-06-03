@@ -1,26 +1,39 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Parallel Validation') {
-            parallel {
-                stage('Unit Tests') {
-                    steps {
-                        echo 'Running Unit Tests'
-                    }
-                }
+    environment {
+        IMAGE_NAME = "dockersujith/docker-pipeline-app"
+        IMAGE_TAG = "${BUILD_NUMBER}"
+    }
 
-                stage('Security Scan') {
-                    steps {
-                        echo 'Running Security Scan'
-                    }
-                }
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/sujithk99/ci-cd-project.git'
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Building Application'
+                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-creds',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+
+                    sh '''
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    docker push ${IMAGE_NAME}:${IMAGE_TAG}
+                    '''
+                }
             }
         }
     }
