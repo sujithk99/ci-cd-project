@@ -190,6 +190,29 @@ This project demonstrates practical DevOps skills including:
 - Docker image lifecycle management
 - Infrastructure workflow understanding
 
+- ## Monitoring & Observability
+
+Integrated Prometheus, Grafana, and Alertmanager using kube-prometheus-stack.
+
+### Features
+
+- Cluster Monitoring
+- Pod Monitoring
+- CPU & Memory Tracking
+- Alerting
+- Self-Healing Validation
+
+### Validation Performed
+
+- Successful Kubernetes Deployment
+- Prometheus Metrics Collection
+- Grafana Dashboard Verification
+- Pod Recovery Testing
+
+### Monitoring Dashboard
+
+![Grafana Dashboard](docs/grafana-dashboard.png)
+
 ---
 
 ## Author
