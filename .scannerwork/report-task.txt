@@ -1,0 +1,6 @@
+projectKey=CI-CD-Project
+serverUrl=http://localhost:9000
+serverVersion=26.5.0.122743
+dashboardUrl=http://localhost:9000/dashboard?id=CI-CD-Project
+ceTaskId=90cfeafd-feee-4ebb-b37a-cee293218347
+ceTaskUrl=http://localhost:9000/api/ce/task?id=90cfeafd-feee-4ebb-b37a-cee293218347
